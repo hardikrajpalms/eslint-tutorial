@@ -1,10 +1,10 @@
-
+import {createRule} from './utils'
 module.exports = {
     rules:{
-        "async-func-name":{
+        "async-func-name":createRule({
             create: function (context){
                 return {
-                    FunctionDeclarationChecker(node){
+                    FunctionDeclaration(node){
                         if(node.async && !/Async$/.test(node.id.name)){
                             const errorFound = true;
                             if(errorFound){
@@ -17,6 +17,6 @@ module.exports = {
                     }
                 }
             }
-        }
+        })
     }
 }
